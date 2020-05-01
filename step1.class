@@ -1,0 +1,22 @@
+define char*20 source[6]
+def char*20 data_name[12]
+def double doppler[6]
+let source "13120-5453" "F10565+2448" "F17207-0014" "09022-3615" "F05189-2524" "F20551-4250"
+let data_name "5-27" "6-1" "6-2" "6-3" "6-4" "6-5" "6-7" "7-27" "7-28" "7-29" "7-30" "8-2"
+let doppler 0.03076	0.0431	0.04281	0.059641	0.042563	0.042996
+
+set nomatch
+set ext .apex
+
+file out ./step1_together.apex single /overwrite
+for i 1 to 12
+    file in 'data_name[i]'".apex"
+    for j 1 to 6
+        find /source 'source[j]'
+        get zero
+        for k 1 to found
+            get next
+            write
+        next
+    next
+next

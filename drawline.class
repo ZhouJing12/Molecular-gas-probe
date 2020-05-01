@@ -1,0 +1,7 @@
+define char*20 line_name[5]
+define double line_fre[5]
+let line_name "HCN J=2-1" "HCO\u+ J=2-1" "HNC J=2-1" "CS 4-3" "H\d2O 3-2"
+let line_fre 177.26 178.375 181.324 195.954 183.310
+for i 1 to 5
+    draw molecule 'line_fre[i]*1000/(1+r%head%spe%doppler)' 'line_name[i]' /pen 2
+next
